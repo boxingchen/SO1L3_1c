@@ -31,19 +31,7 @@ Toggled LSB, result is -32768, HEX 0x8000
 Toggle function returned -32768, HEX 0x8000
 */
 
-short toggle_LSB(short value)
-{
-	short maskLSB = 0x1;
-	short maskLSBSwap = 0xfffe;
-	short lsb;
-
-	lsb = value & maskLSB;
-	if(0 == lsb)
-		value = value | maskLSB;			// set LSB to 1
-	else
-		value = value & maskLSBSwap;		// set LSB to 0
-	return value;
-}
+short toggle_LSB(short);
 
 int main()
 {
@@ -70,4 +58,18 @@ int main()
 
 	system("pause");
 	return 0;
+}
+
+short toggle_LSB(short value)
+{
+	short maskLSB = 0x1;
+	short maskLSBSwap = 0xfffe;
+	short lsb;
+
+	lsb = value & maskLSB;
+	if(0 == lsb)
+		value = value | maskLSB;			// set LSB to 1
+	else
+		value = value & maskLSBSwap;		// set LSB to 0
+	return value;
 }
